@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">Login</h2>
+
+        <form action="{{ path('app_login') }}" method="POST">
+            <div class="mb-4">
+                <label for="_username" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                <input 
+                    type="text" 
+                    name="_username" 
+                    value="{{ lastUsername }}" 
+                    id="_username"
+                    class="block w-full p-3 border border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-900 dark:ring-indigo-500 dark:focus:ring-indigo-400"
+                    placeholder="Enter your email" 
+                    required />
+            </div>
+
+            <div class="mb-6">
+                <label for="_password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                <input 
+                    type="password" 
+                    name="_password" 
+                    id="_password"
+                    class="block w-full p-3 border border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-900 dark:ring-indigo-500 dark:focus:ring-indigo-400"
+                    placeholder="Enter your password" 
+                    required />
+            </div>
+
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center">
+                    <input 
+                        type="checkbox" 
+                        id="remember_me" 
+                        name="remember_me" 
+                        class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-800 dark:border-transparent dark:ring-indigo-500 dark:focus:ring-indigo-400" />
+                    <label for="remember_me" class="ml-2 text-sm text-gray-600 dark:text-gray-300">Remember me</label>
+                </div>
+                <a href="#" class="text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-500">Forgot your password?</a>
+            </div>
+  <input type="hidden" name="_target_path" 
+        value='/post'/>
+            <button type="submit" 
+                class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400">
+                Login
+            </button>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-300">Don't have an account? <a href="#" class="text-indigo-600 hover:text-indigo-700 dark:text-indigo-500">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

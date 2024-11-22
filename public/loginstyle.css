@@ -1,0 +1,12 @@
+.box {
+    width: 800px; /* Width of the box */
+    height: 150px; /* Height of the box */
+    border: 2px solid black; /* Border around the box */
+    padding: 20px; /* Space inside the box */
+    background-color: #f0f0f0; /* Light gray background */
+    text-align: center; /* Center-align the text inside */
+    display: flex; /* Flexbox to center content vertically and horizontally */
+    justify-content: center; /* Horizontal alignment */
+    align-items: center; /* Vertical alignment */
+    margin: 20px auto; /* Center the box on the page horizontally */
+  }

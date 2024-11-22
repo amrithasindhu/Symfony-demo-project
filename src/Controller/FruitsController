@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class FruitsController extends AbstractController
+{
+    private array $messages = [
+        ['messages' => 'Apple', 'created' => '2024/06/12'],
+        ['messages' => 'Orange', 'created' => '2024/04/12'],
+        ['messages' => 'Grape', 'created' => '2023/05/12']
+    ];
+
+ 
+    #[Route('/fruits/{limit<\d+>?3}', name: 'fruit-index')]
+    public function index(int $limit): Response
+    {
+
+        $limit = min($limit, count($this->messages));
+
+        return $this->render('hello/index.html.twig', [
+            'messages' => array_slice($this->messages, 0, $limit)
+        ]);
+    }
+
+  
+    #[Route('/fruits/{id<\d+>}', name: 'fruit-showOne')]
+    public function showOne(int $id): Response
+    {
+
+        if ($id < 0 || $id >= count($this->messages)) {
+            throw $this->createNotFoundException('Fruit not found');
+        }
+
+        return $this->render('hello/showOne.html.twig', [
+            'message' => $this->messages[$id]
+        ]);
+    }
+}
