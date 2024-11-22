@@ -36,20 +36,30 @@
             <div class="text-right">
                
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <div>
+                <div class="flex justify-center space-x-4">
+    <div>
+        <a href="{{ path('app_micro_post_add') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Add New</a>
+    </div>
+    <div>
+        <a href="{{ path('app_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Logout</a>
+    </div>
+    <div>
+        <a href="{{ path('app_settings_profile') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">Profile Settings</a>
+    </div>
+</div>
 
-                        <a href="{{ path('app_micro_post_add') }}">Add New</a>
-                    </div>
-
-                        <div>
-
-                        <a href="{{ path('app_logout') }}">Logout</a>
-                    </div>
                 {% else %}
-                 <div class="text-sm text-gray-400 dark:text-gray-500">
+                <div class="flex justify-center space-x-4">
+                <div>
                 <a href="{{ path('app_login')}}">Login</a>
-                    
                 </div>
+                    
+               
+
+                 <div>
+                        <a href="{{ path('app_register') }}">Register</a>
+                    </div>
+</div>
                 {% endif %}
             </div>
         </div>

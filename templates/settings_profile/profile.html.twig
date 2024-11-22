@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Profile Settings
+{% endblock %}
+
+{% block bread %}
+→ Profile Settings
+{% endblock %}
+{% block body %}
+
+{{form_start}}
+
+{{include ('settings_profile/_profile_form.html.twig')}}
+
+{{ form_end(form) }}
+{% endblock %}
