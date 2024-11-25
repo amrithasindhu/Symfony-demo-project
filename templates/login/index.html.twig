@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+<div class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 -mt-16 ">
     <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">Login</h2>
 
@@ -27,18 +27,6 @@
                     class="block w-full p-3 border border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-900 dark:ring-indigo-500 dark:focus:ring-indigo-400"
                     placeholder="Enter your password" 
                     required />
-            </div>
-
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center">
-                    <input 
-                        type="checkbox" 
-                        id="remember_me" 
-                        name="remember_me" 
-                        class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-800 dark:border-transparent dark:ring-indigo-500 dark:focus:ring-indigo-400" />
-                    <label for="remember_me" class="ml-2 text-sm text-gray-600 dark:text-gray-300">Remember me</label>
-                </div>
-                <a href="#" class="text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-500">Forgot your password?</a>
             </div>
   <input type="hidden" name="_target_path" 
         value='/post'/>
