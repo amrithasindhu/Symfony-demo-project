@@ -39,6 +39,9 @@ class Userprofile
     #[ORM\JoinColumn(nullable: false)]
     private ?User $User = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +139,18 @@ class Userprofile
     public function setUser(User $User): static
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
-{% block title %}Profile Settings
+{% block title %}Profile Image
 {% endblock %}
 
 {% block bread %}
-→ Profile Settings
+→ Profile Image
 {% endblock %}
 {% block body %}
+{{include('settings_profile/_settings_profile_tabs.html.twig')}}
 
 {{form_start}}
 
