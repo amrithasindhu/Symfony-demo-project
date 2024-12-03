@@ -28,8 +28,9 @@ class AppFixtures extends Fixture
         $this->userPasswordHasher->hashPassword(
           $user1,
           '12345'
-        )
-        );
+        ));       
+        $user1->setRoles(['ROLE_EDITOR']); 
+
         $manager->persist($user1);
 
         $user2=new User();

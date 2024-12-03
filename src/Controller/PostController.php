@@ -95,7 +95,7 @@ class PostController extends AbstractController
 
 
   #[Route('/micro-post/{post}/edit', name: 'app_micro_post_edit')]
-  #[IsGranted('ROLE_EDITOR')]
+  #[IsGranted('IS_AUTHENTICATED_FULLY')]
   public function edit(Post $post, Request $request, PostRepository $Posts): Response
   {
 
@@ -119,7 +119,7 @@ class PostController extends AbstractController
   }
 
   #[Route('/micro-post/{post}/comment', name: 'app_micro_post_comment')]
-  #[IsGranted('ROLE_COMMENTER')]
+  #[IsGranted('IS_AUTHENTICATED_FULLY')]
   public function addcomment(Post $post, Request $request, CommentRepository $commen,EntityManagerInterface $entityManager): Response
   {
 

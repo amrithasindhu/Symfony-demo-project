@@ -33,17 +33,18 @@
   </div>
   
   <div class="flex space-x-3">
-    {% if is_granted('ROLE_EDITOR') %}
-      <a href="{{ path('app_micro_post_edit', { post: post.id }) }}" class="mr-2">Edit</a>
-      <a href="{{ path('app_micro_post_comment', { post: post.id }) }}">
-        Comment 
-        <span class="px-2 rounded-md bg-gray-200 dark:bg-gray-700">{{ post.comments.count }}</span>
-      </a>
-    {% else %}
-      <a href="{{ path('app_micro_post_comment', { post: post.id }) }}" class="flex items-center">
-        Comment 
-        <span class="ml-2 px-2 py-1 rounded-md bg-gray-200 dark:bg-gray-700">{{ post.comments.count }}</span>
-      </a>
-    {% endif %}
+  {% if app.user and app.user == post.author %}
+  <a href="{{ path('app_micro_post_edit', { post: post.id }) }}" class="mr-2">Edit</a>
+  <a href="{{ path('app_micro_post_comment', { post: post.id }) }}">
+    Comment 
+    <span class="px-2 rounded-md bg-gray-200 dark:bg-gray-700">{{ post.comments.count }}</span>
+  </a>
+{% else %}
+  <a href="{{ path('app_micro_post_comment', { post: post.id }) }}" class="flex items-center">
+    Comment 
+    <span class="ml-2 px-2 py-1 rounded-md bg-gray-200 dark:bg-gray-700">{{ post.comments.count }}</span>
+  </a> 
+{% endif %}
+
   </div>
 </div>

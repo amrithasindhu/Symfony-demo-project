@@ -18,7 +18,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+   /**
+     * @Assert\NotBlank(message="Email should not be blank.")
+     * @Assert\Email(
+     *     message="The email '{{ value }}' is not a valid email."
+     * )
+     */
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 

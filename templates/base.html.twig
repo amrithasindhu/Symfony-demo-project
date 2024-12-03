@@ -1,75 +1,63 @@
 <!DOCTYPE html>
-<html class="">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="en">
+<html class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-   tailwind.config= {
-    darkMode: 'class'
-   }
-  </script>
-        {# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> #}
-        
-    </head>
-
-
-
-       <body class="bg-gray-100 text-gray-800 m-10 dark:bg-gray-800 dark:text-white">
-<div style="font-size: 2em; font-weight: bold; text-align: center;">
-   Let's Dive into Some TechPost
-</div>
-
-        <div class="w-full md:w-2/3 mx-auto mb-4 flex justify-between items-center">
-            <div class="text-4xl">
+    <div class="container mx-auto px-4 py-6">
+        <div class="text-center">
+            <h1 class="text-2xl md:text-4xl font-semibold">
                 {% block bread %}
                 {% endblock %}
-            </div>
-            <div class="text-right">
-               
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <div class="flex justify-center space-x-4">
-    <div>
-        <a href="{{ path('app_micro_post_add') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Add New</a>
-    </div>
-    <div>
-        <a href="{{ path('app_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Logout</a>
-    </div>
-    <div>
-        <a href="{{ path('app_settings_profile') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">Profile Settings</a>
-    </div>
-</div>
-
-                {% else %}
-                <div class="flex justify-center space-x-4">
-                <div>
-                <a href="{{ path('app_login')}}">Login</a>
-                </div>
-                    
-               
-
-                 <div>
-                        <a href="{{ path('app_register') }}">Register</a>
-                    </div>
-</div>
-                {% endif %}
-            </div>
+            </h1>
         </div>
-        <div class="w-full md:w-2/3 mx-auto">
-    {% for message in app.flashes('success')  %}
-     <div class="rounded-md p-2 border-green-300 bg-green-50 border dark:border-green-600 dark:bg-green-700 dark:text-white mb-4">{{ message }}</div>
-  {% endfor %}
-        {% block body %}
-        
 
-        
+
+       <div class="flex flex-wrap justify-end mt-6 space-x-2 pr-6">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('app_post') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm md:text-base shadow">
+                    Home
+                </a>
+                <a href="{{ path('app_micro_post_add') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm md:text-base shadow">
+                    Add New
+                </a>
+                
+                <a href="{{ path('app_settings_profile') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm md:text-base shadow">
+                    Profile Settings
+                </a>
+                <a href="{{ path('app_settings_profile_image') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm md:text-base shadow">
+                    Profile Image
+                </a>
+                <a href="{{ path('app_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm md:text-base shadow">
+                    Logout
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4">
+        {% for message in app.flashes('success') %}
+            <div class="rounded-md p-4 bg-green-50 border-l-4 border-green-500 dark:bg-green-700 dark:border-green-600 dark:text-white mb-4 text-sm md:text-base">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="container mx-auto px-4 py-6">
+        {% block body %}
         {% endblock %}
+    </div>
 </body>
 </html>
